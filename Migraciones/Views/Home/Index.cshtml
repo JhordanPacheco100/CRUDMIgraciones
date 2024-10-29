@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Bienvenido al sistema de Migraciones</h1>
+    <p>Haz clic en el botón para registrar un nuevo empleado.</p>
+    <a asp-action="Crear" class="btn btn-primary">Registro</a>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Domicilio</th>
+            <th>Puesto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empleado in Model)
+        {
+            <tr>
+                <td>@empleado.Nombre</td>
+                <td>@empleado.Apellido</td>
+                <td>@empleado.Email</td>
+                <td>@empleado.Telefono</td>
+                <td>@empleado.Domicilio</td>
+                <td>@empleado.Puesto</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@empleado.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Eliminar" asp-route-id="@empleado.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
